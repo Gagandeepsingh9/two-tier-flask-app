@@ -18,7 +18,7 @@ pipeline{
                     usernameVariable: "mydockeruser",
                     passwordVariable: "mydockerpass")]){
                 sh "docker login -u ${env.mydockeruser} -p ${env.mydockerpass}"
-                sh "docker image tag myflaskapp:jenkins ${env.mydockeruser}/myflaskapp:latest"
+                sh "docker image tag myflaskapp:latest ${env.mydockeruser}/myflaskapp:latest"
                 sh "docker push ${env.mydockeruser}/myflaskapp:latest"
                 }
             }
