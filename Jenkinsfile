@@ -8,7 +8,7 @@ pipeline{
         }
         stage("building image"){
             steps{
-                sh "docker build -t myflaskapp:jenkins ."
+                sh "docker build -t myflaskapp:latest ."
             }
         }
         stage("push to dockerhub"){
