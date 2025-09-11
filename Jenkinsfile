@@ -9,6 +9,13 @@ pipeline{
                 }
             }
         }
+        stage("checking vulnerbilities"){
+            steps{
+                script{
+                    trivy()
+                }
+            }
+        }
         stage("building image"){
             steps{
                 sh "docker build -t myflaskapp:latest ."
