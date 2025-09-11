@@ -18,19 +18,23 @@ pipeline{
         }
         stage("building image"){
             steps{
-                sh "docker build -t myflaskapp:latest ."
+                script{
+                docker_build("myflaskapp:latest")
+                }
             }
         }
         stage("push to dockerhub"){
             steps{
                 script{
-                    creds("DockerHubCreds","myflaskapp:latest")
+                    docker_push("DockerHubCreds","myflaskapp:latest")
                 }
             }
         }
         stage("deploy"){
             steps{
-                sh "docker compose up -d"
+                script{
+                docker_deploy()
+                }
             }
         }
         }
