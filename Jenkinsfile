@@ -26,7 +26,6 @@ pipeline{
                 script{
                     creds("DockerHubCreds","myflaskapp:latest")
                 }
-                }
             }
         }
         stage("deploy"){
