@@ -23,13 +23,9 @@ pipeline{
         }
         stage("push to dockerhub"){
             steps{
-                withCredentials([usernamePassword(
-                    credentialsId: "DockerHubCreds",
-                    usernameVariable: "mydockeruser",
-                    passwordVariable: "mydockerpass")]){
-                sh "docker login -u ${env.mydockeruser} -p ${env.mydockerpass}"
-                sh "docker image tag myflaskapp:latest ${env.mydockeruser}/myflaskapp:latest"
-                sh "docker push ${env.mydockeruser}/myflaskapp:latest"
+                script{
+                    creds("DockerHubCreds","myflaskapp:latest")
+                }
                 }
             }
         }
