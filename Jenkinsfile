@@ -38,4 +38,20 @@ pipeline{
             }
         }
         }
+    post{
+        success{
+            emailext(
+                to: "gagan13.ca@gmail.com",
+                subject: "This is From Jenkins",
+                body: "Congratulations! The Build is Successfully Deployed"
+            )
+        }
+        failure{
+            emailext(
+                to: "gagan13.ca@gmail.com",
+                subject: "This is From Jenkins",
+                body: "Sorry! Build Failed"
+            )
+        }
+    }
 }
