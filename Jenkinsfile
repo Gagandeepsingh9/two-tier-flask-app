@@ -4,7 +4,9 @@ pipeline{
     stages{
         stage("cloning code"){
             steps{
-               clone("https://github.com/Gagandeepsingh9/two-tier-flask-app","master")
+                script{
+                    clone("https://github.com/Gagandeepsingh9/two-tier-flask-app","master")
+                }
             }
         }
         stage("building image"){
